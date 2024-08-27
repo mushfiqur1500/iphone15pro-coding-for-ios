@@ -1,19 +1,19 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=inter&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=inter&display=swap'); */
 
 root {
   --size: max (5px, 1vmin);
   --height: 80em;
   --pad: 1.25em;
   --border-radius: 6.666em;
-  --gutter: calc(var(--pad)* 2);
+  --gutter: calc(var(--pad) * 2);
   --button-width: 3.33em;
   --notch-width: 33.3%;
   --notch-radius: calc(var(--border-radius) - calc(var(--pad) * 2));
   --notch-duration: 0.333s;
-  --ease: cubic-bezier(.666, 0, .4, 1);
-  --ease-spring: cubic-bezier(.666, 0, .4, 1.2);
-  --ease-out: cubic-bezier(.15, 0, .333, 1);
+  --ease: cubic-bezier(0.666, 0, 0.4, 1);
+  --ease-spring: cubic-bezier(0.666, 0, 0.4, 1.2);
+  --ease-out: cubic-bezier(0.15, 0, 0.333, 1);
   --border-width: 0.4em;
   --deep-purple: 284;
   --gold: 30;
@@ -46,7 +46,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  font-family: 'inter';
+  font-family: "inter";
   font-size: var(--size);
 }
 
@@ -57,7 +57,8 @@ body {
   background: black;
   height: var(--height);
   border-radius: var(--border-radius);
-  box-shadow: 0 0 0.1em 0.25em hsl(var(--c-h), 20%, 25%, 0 0 0 var(--box-shadow));
+  box-shadow: 0 0 0.1em 0.25em
+    hsl(var(--c-h), 20%, 25%, 0 0 0 var(--box-shadow));
   box-sizing: border-box;
   opacity: 0;
   transform: scale3d(1.1, 1.1, 1);
@@ -114,11 +115,15 @@ body {
   height: 9.5em;
 }
 
-
 .buttons .button {
   background: hsl(var(--c-h), 20%, 95%);
   height: 6em;
-  box-shadow: inset -0.15em 0 0.1em black, inset 0 0 0.1em hsl (var (--c-h), 30%, 90%), inset 0 0.2em 0.1em hsl(var (--c-h), 30%, 90%), inset 0 -0.2em 0.1em hsl (var (--c-h), 30% 90%), inset -0.1em 0.333em 0.1em rgba(0, 0, 0, 0.5), inset -0.1em -0.333em 0.1em rgba (0, 0, 0, 0.5);
+  box-shadow: inset -0.15em 0 0.1em black,
+    inset 0 0 0.1em hsl (var (--c-h), 30%, 90%),
+    inset 0 0.2em 0.1em hsl(var (--c-h), 30%, 90%),
+    inset 0 -0.2em 0.1em hsl (var (--c-h), 30% 90%),
+    inset -0.1em 0.333em 0.1em rgba(0, 0, 0, 0.5),
+    inset -0.1em -0.333em 0.1em rgba (0, 0, 0, 0.5);
   border-top-left-radius: 0.2em;
   border-bottom-left-radius: 0.2em;
 }
@@ -132,7 +137,6 @@ body {
   flex-direction: column;
   align-items: center;
   gap: calc(var(--pad) * 2);
-
 }
 
 .screen-container::before {
@@ -155,7 +159,7 @@ body {
   overflow: hidden;
 }
 
-.bg>* {
+.bg > * {
   position: absolute;
   inset: 0;
   display: flex;
@@ -176,13 +180,24 @@ body {
   border-bottom-right-radius: 20em;
 }
 
-
 .bg .section::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: radial-gradient (85% 125% at 50% 140%, black 66.6%, transparent), radial-gradient (120% 120% at 50% 145%, hsl (calc (var (--g-h) - 45), 100%, 50%) 50%, transparent), radial-gradient (150% 100% at 50% 80%, transparent 35%, hsl (calc (var (--g-h) + 50), 100%, 99%));
+  background: radial-gradient(85% 125% at 50% 140%, black 66.6%, transparent);
+    radial-gradient
+      (
+        120% 120% at 50% 145%,
+        hsl (calc (var (--g-h) - 45), 100%, 50%) 50%,
+        transparent
+      ),
+    radial-gradient
+      (
+        150% 100% at 50% 80%,
+        transparent 35%,
+        hsl (calc (var (--g-h) + 50), 100%, 99%)
+      );
   background-color: hsl(var(--g-h), var(--g-s, var(--h-l)));
   transform: scale3d(1.1, 1.25, 1);
   transform-origin: bottom;
@@ -196,9 +211,12 @@ body {
   border: var(--border-width) solid rgba(255, 255, 255, 0.8);
   border-radius: inherit;
   filter: blur(0.05em);
-  -webkit-mask-image: radial-gradient(100% 100% at 50% 70, black 30%, transparent 50%);
+  -webkit-mask-image: radial-gradient(
+    100% 100% at 50% 70,
+    black 30%,
+    transparent 50%
+  );
   mask-image: radial-gradient(100% 100% at 50% 70, black 30%, transparent 50%);
-  ;
 }
 
 .bg.section .glow {
@@ -207,7 +225,11 @@ body {
   border-radius: inherit;
   mix-blend-mode: overlay;
   z-index: 1;
-  background: radial-gradient(80% 150% at 50% 100%, hsl(var(--g-h), 100%, var(--g-l)), transparent 70%);
+  background: radial-gradient(
+    80% 150% at 50% 100%,
+    hsl(var(--g-h), 100%, var(--g-l)),
+    transparent 70%
+  );
 }
 
 .bg .section:last-of-type {
@@ -218,7 +240,23 @@ body {
 }
 
 .bg.section:last-of-type::before {
-  background: radial-gradient (85% 125% at 50응 140응, black 66.68, transparent), radial-gradient (120음 120응 at 50응 145%, hsl(calc(var(--g-h) - var (--g-hue-adjust-2, var (--g-hue-adjast, 0))), 100%, 50%) 50%, transparent), radial-gradient(150응 100용 at 50응 95%, transparent 15%, hsl(calc(var(--g-h) + 5), 100% var (--g-lightness, 100%)));
+  background: radial-gradient (85% 125% at 50응 140응, black 66.68, transparent),
+    radial-gradient
+      (
+        120음 120응 at 50응 145%,
+        hsl(
+            calc(var(--g-h) - var (--g-hue-adjust-2, var (--g-hue-adjast, 0))),
+            100%,
+            50%
+          )
+          50%,
+        transparent
+      ),
+    radial-gradient(
+      150응 100용 at 50응 95%,
+      transparent 15%,
+      hsl(calc(var(--g-h) + 5), 100% var (--g-lightness, 100%))
+    );
   background-color: hsl(var(--g-h), var(--g-s), var(--g-l));
 }
 
@@ -256,7 +294,6 @@ body {
   opacity: 1;
 }
 
-
 .notch-container:hover .notch,
 .notch-container:focus-within .notch {
   max-width: 100%;
@@ -265,15 +302,14 @@ body {
   transform: scale3d(1, 1, 1);
 }
 
-.notch-container:hover~.notch-blur,
-.notch-container:focus-within~.notch-blur {
+.notch-container:hover ~ .notch-blur,
+.notch-container:focus-within ~ .notch-blur {
   opacity: 1;
   max-height: calc(var(--notch-radius) * 2.75 +var(--pad));
 }
 
-
 .notch-container:focus-within {
-  max-height: calc(var(--notch-radius) *3);
+  max-height: calc(var(--notch-radius) * 3);
   --bar-height: 1em;
   --bar-opacity: 1;
 }
@@ -283,8 +319,7 @@ body {
   max-height: calc(var(--bar-height, 0%) -var(--content-gap));
 }
 
-
-.notch-container:focus-within~.notch-blur {
+.notch-container:focus-within ~ .notch-blur {
   max-height: calc(var(--notch-radius) * 5);
   opacity: 1;
 }
@@ -300,8 +335,16 @@ body {
   -webkit-backdrop-filter: blur(0.2em);
   backdrop-filter: blur(0.2em);
   fill: blur(0.1em);
-  -webkit-mask-image: linear-gradient(to bottom, black calc(100% -var(--notch-radius)), transparent);
-  mask-image: linear-gradient(to bottom, black calc(100% -var(--notch-radius)), transparent);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black calc(100% -var(--notch-radius)),
+    transparent
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    black calc(100% -var(--notch-radius)),
+    transparent
+  );
   opacity: 0;
   transition: var(--notch-duration) ease-in-out;
   border-radius: calc(var(--border-radius) - var(--pad));
@@ -323,7 +366,7 @@ body {
   transition: inherit;
   transition-property: inherit;
   will-change: inherit;
-  filter: drop-shadow(0 1em 2em hsla(0 0% 0%/var(--shadow-opacity, 0)));
+  filter: drop-shadow(0 1em 2em hsla(0 0% 0% / var(--shadow-opacity, 0)));
   transform: scale3d(0.375, 0.4, 1);
   transform-origin: top;
 }
@@ -351,7 +394,6 @@ body {
   display: flex;
   align-items: center;
   gap: 1em;
-
 }
 
 .content,
@@ -409,7 +451,13 @@ body {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: radial-gradient(50% 50% at 55% 40%, #131386, #cd1385 75%, transparent) center/133.3% 133.3%;
+  background: radial-gradient(
+      50% 50% at 55% 40%,
+      #131386,
+      #cd1385 75%,
+      transparent
+    )
+    center/133.3% 133.3%;
   background-color: yellow;
   filter: blur(0.05em);
 }
@@ -464,14 +512,15 @@ body {
   margin-right: calc(var(--pad) * 0.333);
 }
 
-
 .camera::before {
   content: "";
   height: 33.3%;
   aspect-ratio: 1;
   border-radius: inherit;
   box-shadow: inset 0 0 0.25em #4c4da3;
-  background: radial-gradient(#6667ac, transparent 50%) no-repeat 33.3% 10%/75% 50%, radial-gradient(#454680, transparent 50%) no-repeat 60% 85%/50% 50%;
+  background: radial-gradient(#6667ac, transparent 50%) no-repeat 33.3% 10%/75%
+      50%,
+    radial-gradient(#454680, transparent 50%) no-repeat 60% 85%/50% 50%;
   background-color: #080928;
 }
 
@@ -481,7 +530,7 @@ body {
   margin-bottom: -0.25em;
 }
 
-input[type=radio] {
+input[type="radio"] {
   display: none;
 }
 
@@ -497,7 +546,11 @@ input[type=radio] {
   box-sizing: border-box;
   transition: 0.333s var(--ease-out);
   transition-property: border-color, transform;
-  background: radial-gradient(100% 100% at 50% 30%, var(--swatch-s1), var(--swatch-s2));
+  background: radial-gradient(
+    100% 100% at 50% 30%,
+    var(--swatch-s1),
+    var(--swatch-s2)
+  );
   opacity: 0;
   transform: translate3d(0, 205, 0) scale3d(0.75, 0.75, 1);
   -webkit-animation: appear 0.333s var(--ease-out) forwards 0.75s;
@@ -526,49 +579,50 @@ input[type=radio] {
   transform-origin: 20% 200%;
 }
 
-
 .swatch:before {
   content: "";
   position: absolute;
   inset: -1px;
   border-radius: inherit;
   border: var(--border-width) solid black;
-  background-image: radial-gradient(400% 300% at 50% 225%, transparent 20%, white);
+  background-image: radial-gradient(
+    400% 300% at 50% 225%,
+    transparent 20%,
+    white
+  );
 }
 
-.swatch[for=deep-purple] {
+.swatch[for="deep-purple"] {
   --swatch-s1: hsl(var(--deep-purple), 100%, 50%);
   --swatch-s2: hsl(calc(var(--deep-purple) - 60), 100%, 20%);
 }
 
-.swatch[for=deep-purple]:before {
+.swatch[for="deep-purple"]:before {
   opacity: 0.5;
 }
 
-.swatch[for=gold] {
+.swatch[for="gold"] {
   --swatch-s1: hsl(var(--gold), 100%, 50%);
   --swatch-s2: hsl(var(--gold), 100%, 50%);
 }
 
-.swatch[for=space-black]:before {
+.swatch[for="space-black"]:before {
   --swatch-s1: hsl(var(--space-black), 50%, 20%);
   --swatch-s2: hsl(var(--space-black), 50%, 10%);
 }
 
-.swatch[for=space-black]:before {
+.swatch[for="space-black"]:before {
   opacity: 0.5;
 }
 
-.swatch[for=silver]:before {
+.swatch[for="silver"]:before {
   --swatch-s1: hsl(var(--silver), 50%, 80%);
   --swatch-s2: hsl(var(--silver), 50%, 10%);
 }
 
-
-.swatch[for=silver]:before {
+.swatch[for="silver"]:before {
   opacity: 0.75;
 }
-
 
 .deep-purple {
   --c-h: var(--deep-purple);
@@ -598,68 +652,66 @@ input[type=radio] {
   opacity: 0.25;
 }
 
-#deep-purple:checked~.phone .bg .deep-purple {
+#deep-purple:checked ~ .phone .bg .deep-purple {
   opacity: 1;
   z-index: 1;
   transition-delay: 0s;
 }
 
-#deep-purple:checked~.phone .bg .deep-purple .section::before {
+#deep-purple:checked ~ .phone .bg .deep-purple .section::before {
   transition-delay: 0s;
   animation: test 1s infinite alternate-reverse;
 }
 
-#deep-purple:checked~.pallette label[for=deep-purple] {
+#deep-purple:checked ~ .pallette label[for="deep-purple"] {
   border-color: hsl(var(--deep-purple), 50%, 75%);
 }
 
-#gold:checked~.phone .bg .gold {
+#gold:checked ~ .phone .bg .gold {
   opacity: 1;
   z-index: 1;
   transition-delay: 0s;
 }
 
-#gold:checked~.phone .bg .gold .section::before {
+#gold:checked ~ .phone .bg .gold .section::before {
   transition-delay: 0s;
   transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
   animation: test 1s infinite alternate-reverse;
 }
 
-#gold:checked~.pallette label[for=gold] {
+#gold:checked ~ .pallette label[for="gold"] {
   border-color: hsl(var(--gold), 50%, 75%);
 }
 
-
-#space-black:checked~.phone .bg .space-black {
+#space-black:checked ~ .phone .bg .space-black {
   opacity: 1;
   z-index: 1;
   transition-delay: 0s;
 }
 
-#space-black:checked~.phone .bg .space-black .section::before {
+#space-black:checked ~ .phone .bg .space-black .section::before {
   transition-delay: 0s;
   transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
   animation: test 1s infinite alternate-reverse;
 }
 
-#space-black:checked~.pallette label[for=space-black] {
+#space-black:checked ~ .pallette label[for="space-black"] {
   border-color: hsl(var(--space-black), 50%, 75%);
 }
 
-
-#silver:checked~.phone .bg .silver {
+#silver:checked ~ .phone .bg .silver {
   opacity: 1;
   z-index: 1;
   transition-delay: 0s;
 }
 
-#silver:checked~.phone .bg .silver .section::before {
+#silver:checked ~ .phone .bg .silver .section::before {
   transition-delay: 0s;
   transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
   animation: test 1s infinite alternate-reverse;
 }
 
-#silver:checked~.pallette label[for=silver] {
+#silver:checked ~ .pallette label[for="silver"] {
   border-color: hsl(var(--silver), 50%, 75%);
 }
 
