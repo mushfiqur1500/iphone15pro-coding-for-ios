@@ -1,13 +1,13 @@
-@charset "UTF-8";
-/* @import url('https://fonts.googleapis.com/css2?family=inter&display=swap'); */
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 
-root {
-  --size: max (5px, 1vmin);
-  --height: 80em;
+:root {
+  --size: max(5px, 1vmin);
+  --heght: 80em;
   --pad: 1.25em;
   --border-radius: 6.666em;
   --gutter: calc(var(--pad) * 2);
-  --button-width: 3.33em;
+  --button-width: 0.333em;
+  --notch-height: 3.33em;
   --notch-width: 33.3%;
   --notch-radius: calc(var(--border-radius) - calc(var(--pad) * 2));
   --notch-duration: 0.333s;
@@ -19,7 +19,7 @@ root {
   --gold: 30;
   --space-black: 215;
   --silver: 254;
-  --c-h: var(var(--deep-purple));
+  --c-h: var(--deep-purple);
   --c-s: 100%;
   --c-l: 50%;
 }
@@ -39,14 +39,14 @@ root {
 }
 
 body {
-  background: #0000;
+  background: #00000a;
   display: flex;
   flex-direction: column;
   gap: 3em;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  font-family: "inter";
+  font-family: "Inter";
   font-size: var(--size);
 }
 
@@ -55,10 +55,10 @@ body {
   z-index: 1;
   aspect-ratio: 37/76;
   background: black;
-  height: var(--height);
+  height: var(--heght);
   border-radius: var(--border-radius);
-  box-shadow: 0 0 0.1em 0.25em
-    hsl(var(--c-h), 20%, 25%, 0 0 0 var(--box-shadow));
+  box-shadow: 0 0 0.1em 0.25em hsl(var(--c-h), 20%, 25%),
+    0 0 0 var(--border-width) hsl(var(--c-h), 30%, 85%);
   box-sizing: border-box;
   opacity: 0;
   transform: scale3d(1.1, 1.1, 1);
@@ -119,11 +119,11 @@ body {
   background: hsl(var(--c-h), 20%, 95%);
   height: 6em;
   box-shadow: inset -0.15em 0 0.1em black,
-    inset 0 0 0.1em hsl (var (--c-h), 30%, 90%),
-    inset 0 0.2em 0.1em hsl(var (--c-h), 30%, 90%),
-    inset 0 -0.2em 0.1em hsl (var (--c-h), 30% 90%),
+    inset 0 0 0.1em hsl(var(--c-h), 30%, 90%),
+    inset 0 0.2em 0.1em hsl(var(--c-h), 30%, 90%),
+    inset 0 -0.2em 0.1em hsl(var(--c-h), 30%, 90%),
     inset -0.1em 0.333em 0.1em rgba(0, 0, 0, 0.5),
-    inset -0.1em -0.333em 0.1em rgba (0, 0, 0, 0.5);
+    inset -0.1em -0.333em 0.1em rgba(0, 0, 0, 0.5);
   border-top-left-radius: 0.2em;
   border-bottom-left-radius: 0.2em;
 }
@@ -148,7 +148,7 @@ body {
   bottom: calc(var(--pad) * 0.75);
   height: calc(var(--pad) * 0.5);
   border-radius: calc(var(--pad) * 0.25);
-  filter: drop-shadow(0 0.1 0.25em rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 0.1em 0.25em rgba(0, 0, 0, 0.1));
 }
 
 .bg {
@@ -165,7 +165,7 @@ body {
   display: flex;
   flex-direction: column;
   opacity: 0;
-  transition: opacity ls var(--ease-out) 0.5s;
+  transition: opacity 1s var(--ease-out) 0.5s;
 }
 
 .bg .section {
@@ -180,28 +180,26 @@ body {
   border-bottom-right-radius: 20em;
 }
 
-.bg .section::before {
+.bg .section:before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: radial-gradient(85% 125% at 50% 140%, black 66.6%, transparent);
-    radial-gradient
-      (
-        120% 120% at 50% 145%,
-        hsl (calc (var (--g-h) - 45), 100%, 50%) 50%,
-        transparent
-      ),
-    radial-gradient
-      (
-        150% 100% at 50% 80%,
-        transparent 35%,
-        hsl (calc (var (--g-h) + 50), 100%, 99%)
-      );
-  background-color: hsl(var(--g-h), var(--g-s, var(--h-l)));
+  background: radial-gradient(85% 125% at 50% 140%, black 66.6%, transparent),
+    radial-gradient(
+      120% 120% at 50% 145%,
+      hsl(calc(var(--g-h) - 45), 100%, 50%) 50%,
+      transparent
+    ),
+    radial-gradient(
+      150% 100% at 50% 80%,
+      transparent 35%,
+      hsl(calc(var(--g-h) + 50), 100%, 99%)
+    );
+  background-color: hsl(var(--g-h), var(--g-s), var(--g-l));
   transform: scale3d(1.1, 1.25, 1);
   transform-origin: bottom;
-  transition: transform ls var(--ease-out) 0.5s;
+  transition: transform 1s var(--ease-out) 0.5s;
 }
 
 .bg .section:after {
@@ -212,14 +210,14 @@ body {
   border-radius: inherit;
   filter: blur(0.05em);
   -webkit-mask-image: radial-gradient(
-    100% 100% at 50% 70,
+    100% 100% at 50% 70%,
     black 30%,
     transparent 50%
   );
-  mask-image: radial-gradient(100% 100% at 50% 70, black 30%, transparent 50%);
+  mask-image: radial-gradient(100% 100% at 50% 70%, black 30%, transparent 50%);
 }
 
-.bg.section .glow {
+.bg .section .glow {
   position: absolute;
   inset: 0;
   border-radius: inherit;
@@ -239,23 +237,22 @@ body {
   transform: scale3d(1, -1, 1) translateZ(1px);
 }
 
-.bg.section:last-of-type::before {
-  background: radial-gradient (85% 125% at 50응 140응, black 66.68, transparent),
-    radial-gradient
-      (
-        120음 120응 at 50응 145%,
-        hsl(
-            calc(var(--g-h) - var (--g-hue-adjust-2, var (--g-hue-adjast, 0))),
-            100%,
-            50%
-          )
-          50%,
-        transparent
-      ),
+.bg .section:last-of-type::before {
+  background: radial-gradient(85% 125% at 50% 140%, black 66.6%, transparent),
     radial-gradient(
-      150응 100용 at 50응 95%,
+      120% 120% at 50% 145%,
+      hsl(
+          calc(var(--g-h) - var(--g-hue-adjust-2, var(--g-hue-adjust, 0))),
+          100%,
+          50%
+        )
+        50%,
+      transparent
+    ),
+    radial-gradient(
+      150% 100% at 50% 95%,
       transparent 15%,
-      hsl(calc(var(--g-h) + 5), 100% var (--g-lightness, 100%))
+      hsl(calc(var(--g-h) + 5), 100%, var(--g-lightness, 100%))
     );
   background-color: hsl(var(--g-h), var(--g-s), var(--g-l));
 }
@@ -274,7 +271,6 @@ body {
   outline: none;
   transition: var(--notch-duration) var(--ease);
   transition-property: max-height, max-width, filter, transform;
-  outline: none;
   will-change: max-width, max-height, filter;
 }
 
@@ -305,7 +301,7 @@ body {
 .notch-container:hover ~ .notch-blur,
 .notch-container:focus-within ~ .notch-blur {
   opacity: 1;
-  max-height: calc(var(--notch-radius) * 2.75 +var(--pad));
+  max-height: calc(var(--notch-radius) * 2.75 + var(--pad));
 }
 
 .notch-container:focus-within {
@@ -316,7 +312,7 @@ body {
 
 .notch-container:focus-within .left,
 .notch-container:focus-within .right {
-  max-height: calc(var(--bar-height, 0%) -var(--content-gap));
+  max-height: calc(100% - var(--bar-height, 0%) - var(--content-gap));
 }
 
 .notch-container:focus-within ~ .notch-blur {
@@ -331,18 +327,18 @@ body {
   right: calc(var(--pad) - 3px);
   left: calc(var(--pad) - 3px);
   height: 100%;
-  max-width: calc(var(--notch-radius) * 1.5);
+  max-height: calc(var(--notch-radius) * 1.5);
   -webkit-backdrop-filter: blur(0.2em);
   backdrop-filter: blur(0.2em);
   fill: blur(0.1em);
   -webkit-mask-image: linear-gradient(
     to bottom,
-    black calc(100% -var(--notch-radius)),
+    black calc(100% - var(--notch-radius)),
     transparent
   );
   mask-image: linear-gradient(
     to bottom,
-    black calc(100% -var(--notch-radius)),
+    black calc(100% - var(--notch-radius)),
     transparent
   );
   opacity: 0;
@@ -390,7 +386,7 @@ body {
 .content .left,
 .content .right {
   height: 100%;
-  max-width: calc(100% - var(--bar-height, 0%));
+  max-height: calc(100% - var(--bar-height, 0%));
   display: flex;
   align-items: center;
   gap: 1em;
@@ -405,7 +401,8 @@ body {
 }
 
 .content .left,
-.content .right .content .bar {
+.content .right,
+.content .bar {
   transition-property: max-height, opacity;
   will-change: max-height;
 }
@@ -423,14 +420,14 @@ body {
 }
 
 .content .text:before {
-  content: "MusicArtistName";
+  content: "Montagem Orchestra Sinfonica";
   order: 1;
   text-transform: uppercase;
 }
 
 .content .text:after {
   order: 2;
-  content: "MusicName";
+  content: "DJ Tenebroso";
   opacity: 0.5;
 }
 
@@ -490,11 +487,11 @@ body {
 }
 
 .content .bar::before {
-  content: "1:20";
+  content: "0:16";
 }
 
 .content .bar:after {
-  content: "-1.48";
+  content: "3:19";
 }
 
 .camera {
@@ -552,7 +549,7 @@ input[type="radio"] {
     var(--swatch-s2)
   );
   opacity: 0;
-  transform: translate3d(0, 205, 0) scale3d(0.75, 0.75, 1);
+  transform: translate3d(0, 20%, 0) scale3d(0.75, 0.75, 1);
   -webkit-animation: appear 0.333s var(--ease-out) forwards 0.75s;
   animation: appear 0.333s var(--ease-out) forwards 0.75s;
 }
@@ -606,7 +603,7 @@ input[type="radio"] {
   --swatch-s2: hsl(var(--gold), 100%, 50%);
 }
 
-.swatch[for="space-black"]:before {
+.swatch[for="space-black"] {
   --swatch-s1: hsl(var(--space-black), 50%, 20%);
   --swatch-s2: hsl(var(--space-black), 50%, 10%);
 }
@@ -615,7 +612,7 @@ input[type="radio"] {
   opacity: 0.5;
 }
 
-.swatch[for="silver"]:before {
+.swatch[for="silver"] {
   --swatch-s1: hsl(var(--silver), 50%, 80%);
   --swatch-s2: hsl(var(--silver), 50%, 10%);
 }
@@ -626,12 +623,12 @@ input[type="radio"] {
 
 .deep-purple {
   --c-h: var(--deep-purple);
-  --g-hue-adjust: 60%;
+  --g-hue-adjust: 60;
 }
 
 .gold {
   --c-h: var(--gold);
-  --g-hue-adjust-2: -100%;
+  --g-hue-adjust-2: -100;
 }
 
 .space-black {
@@ -719,7 +716,6 @@ input[type="radio"] {
   from {
     transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
   }
-
   to {
     transform: scale3d(2, 2, 2) translate3d(50px, 50px, 50px);
   }
